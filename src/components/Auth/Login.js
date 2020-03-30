@@ -9,10 +9,14 @@ const INITIAL_STATE = {
 };
 
 function Login(props) {
-  const { handleChange, handleSubmit, values } = useFormValidation(
-    INITIAL_STATE,
-    validateLogin
-  );
+  const {
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    values,
+    errors,
+    isSubmitting
+  } = useFormValidation(INITIAL_STATE, validateLogin);
   const [login, setLogin] = useState(true);
 
   return (
@@ -22,6 +26,7 @@ function Login(props) {
         {!login && (
           <input
             onChange={handleChange}
+            onBlur={handleBlur}
             value={values.name}
             type="text"
             name="name"
@@ -31,7 +36,9 @@ function Login(props) {
         )}
         <input
           onChange={handleChange}
+          onBlur={handleBlur}
           value={values.email}
+          className={errors.email && "error-input"}
           type="email"
           name="email"
           placeholder="Your email"
@@ -39,7 +46,9 @@ function Login(props) {
         />
         <input
           onChange={handleChange}
+          onBlur={handleBlur}
           value={values.password}
+          className={errors.password && "error-input"}
           type="password"
           name="password"
           placeholder="Choose a secure password"
