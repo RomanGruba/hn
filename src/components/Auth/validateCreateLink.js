@@ -1,6 +1,5 @@
 export default function validateCreateLink(values) {
   let errors = {};
-
   // description errors
   if (!values.description) {
     errors.description = "Description required";
@@ -11,7 +10,7 @@ export default function validateCreateLink(values) {
   if (!values.url) {
     errors.url = "URL required";
   } else if (!/^(ftp|http|https):\/\/[^ "]+$/.test(values.url)) {
-    errors.password = "URL must be valid";
+    errors.url = "URL must be valid";
   }
 
   return errors;
