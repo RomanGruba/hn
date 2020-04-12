@@ -8,14 +8,7 @@ function LinkList(props) {
   const isNewPage = props.location.pathname.includes("new");
 
   useEffect(() => {
-    let isFetching = true;
-    const fetchingItems = async () => {
-      if (isFetching) {
-        await getLinks();
-      }
-    };
-    fetchingItems();
-    return () => (isFetching = false);
+    getLinks();
   }, []);
 
   function getLinks() {
