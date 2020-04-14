@@ -18,6 +18,7 @@ function LinkList(props) {
       return firebase.db
         .collection("links")
         .orderBy("voteCount", "desc")
+        .limit(2)
         .onSnapshot(handleSnapshot);
     }
     return firebase.db

@@ -16,7 +16,7 @@ function LinkItem({ link, index, showCount, history }) {
           const previousVotes = doc.data().votes;
           const vote = { votedBy: { id: user.uid, name: user.displayName } };
           const updatedVotes = [...previousVotes, vote];
-          const voteCount = updatedVotes.length();
+          const voteCount = updatedVotes.length;
           voteRef.update({ votes: updatedVotes, voteCount });
         }
       });
