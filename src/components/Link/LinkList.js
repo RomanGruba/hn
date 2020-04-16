@@ -64,6 +64,8 @@ function LinkList(props) {
     }
   }
 
+  const pageIndex = page ? (page - 1) * LINKS_PER_PAGE + 1 : 0;
+
   return (
     <div>
       {links.map((link, index) => (
@@ -71,7 +73,7 @@ function LinkList(props) {
           key={link.id}
           showCount={true}
           link={link}
-          index={index + 1}
+          index={index + pageIndex}
         />
       ))}
       {isNewPage && (
